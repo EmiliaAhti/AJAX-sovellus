@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+select {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.movie-card {
+    display: inline-block;
+    width: 200px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.movie-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
