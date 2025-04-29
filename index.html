@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Information App</title>¨
+    <title>Movie Information App</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body>
-    <h1>Movie Information App</h1>
-
-    <label for="theaterSelect">Valitse teatteri:</label>
-    <select id="theaterSelect">
-        <option value="">Ladataan teattereita...</option>
-    </select>
-
-    <div id="movies"></div>
+    <div class="container">
+        <h1>Elokuvatiedot</h1>
+        
+        <div class="theater-selection">
+            <label for="theaterSelect">Valitse teatteri:</label>
+            <select id="theaterSelect">
+                <option value="">Ladataan teattereita...</option>
+            </select>
+        </div>
+        
+        <div id="movies" class="movie-container"></div>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>
