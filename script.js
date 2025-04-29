@@ -38,15 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Teattereiden näyttäminen
     function displayTheaters(theaterData) {
         theaterSelect.innerHTML = "<option value=''>Valitse teatteri</option>";
-        
         Array.from(theaterData).forEach(theater => {
-            const id = theater.getElementsByTagName("ID")[0].textContent;
             const name = theater.getElementsByTagName("Name")[0].textContent;
-            
-            const option = document.createElement('option');
-            option.value = id;
-            option.textContent = name;
-            theaterSelect.appendChild(option);
+            if (name !== "Pääkaupunkiseutu") {
+                const id = theater.getElementsByTagName("ID")[0].textContent;
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = name;
+                theaterSelect.appendChild(option);
+            }
         });
     }
     
