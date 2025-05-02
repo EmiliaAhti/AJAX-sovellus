@@ -1,18 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const theaterSelect = document.getElementById('theaterSelect');
-    const movieContainer = document.getElementById('movies');
+    const teatteriValinta = document.getElementById('teatteriValinta');
+    const elokuvaContainer = document.getElementById('movies');
     
     // Haetaan teatterit
     fetchTheaters();
     
     // Lisätään kuuntelija, teatterin valinta
-    theaterSelect.addEventListener('change', () => {
-        const theaterId = theaterSelect.value;
-        if (!theaterId) {
-            movieContainer.innerHTML = "";
+    teatteriValinta.addEventListener('change', () => {
+        const teatteriId = teatteriValinta.value;
+        if (!teatteriId) {
+            elokuvaContainer.innerHTML = "";
             return;
         }
-        fetchMovies(theaterId);
+        fetchMovies(teatteriId);
     });
     
     // Teattereiden haku
@@ -27,37 +27,37 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(xmlText => {
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(xmlText, "text/xml");
-                displayTheaters(xml.getElementsByTagName("TheatreArea"));
+                naytaTeatterit(xml.getElementsByTagName("TheatreArea"));
             })
             .catch(error => {
                 console.error('Virhe teatteritietojen haussa:', error);
-                theaterSelect.innerHTML = "<option value=''>Virhe teattereiden haussa</option>";
+                teatteriValinta.innerHTML = "<option value=''>Virhe teattereiden haussa</option>";
             });
     }
     
     // Teattereiden näyttäminen
-    function displayTheaters(theaterData) {
-        theaterSelect.innerHTML = "<option value=''>Valitse teatteri</option>";
-        Array.from(theaterData).forEach(theater => {
+    function naytaTeatterit(teatteriTiedot) {
+        teatteriValinta.innerHTML = "<option value=''>Valitse teatteri</option>";
+        Array.from(teatteriTiedot).forEach(theater => {
             const name = theater.getElementsByTagName("Name")[0].textContent;
 
-            const excludedTheaters = ["Valitse alue/teatteri", "Pääkaupunkiseutu", "Espoo", "Helsinki", "Tampere", "Turku ja Raisio"];
+            const ohitetutTeatterit = ["Valitse alue/teatteri", "Pääkaupunkiseutu", "Espoo", "Helsinki", "Tampere", "Turku ja Raisio"];
 
-            if (!excludedTheaters.includes(name)) {
+            if (!ohitetutTeatterit.includes(name)) {
                 const id = theater.getElementsByTagName("ID")[0].textContent;
                 const option = document.createElement('option');
                 option.value = id;
                 option.textContent = name;
-                theaterSelect.appendChild(option);
+                teatteriValinta.appendChild(option);
             }
         });
     }
     
     // Elokuvien haku
-    function fetchMovies(theaterId) {
-        movieContainer.innerHTML = "<p>Ladataan elokuvia...</p>";
+    function fetchMovies(teatteriId) {
+        elokuvaContainer.innerHTML = "<p>Ladataan elokuvia...</p>";
         
-        fetch(`https://www.finnkino.fi/xml/Schedule/?area=${theaterId}`)
+        fetch(`https://www.finnkino.fi/xml/Schedule/?area=${teatteriId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -68,38 +68,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(xmlText, "text/xml");
                 const movies = xml.getElementsByTagName("Show");
-                displayMovies(movies);
+                naytaElokuvat(movies);
             })
             .catch(error => {
                 console.error('Virhe haettaessa elokuvia:', error);
-                movieContainer.innerHTML = "<p>Virhe elokuvien haussa</p>";
+                elokuvaContainer.innerHTML = "<p>Virhe elokuvien haussa</p>";
             });
     }
     
     // Elokuvien näyttäminen
-    function displayMovies(movieData) {
-        if (movieData.length === 0) {
-            movieContainer.innerHTML = "<p>Ei näytöksiä saatavilla valitulle teatterille</p>";
+    function naytaElokuvat(elokuvaTiedot) {
+        if (elokuvaTiedot.length === 0) {
+            elokuvaContainer.innerHTML = "<p>Ei näytöksiä saatavilla valitulle teatterille</p>";
             return;
         }
         
-        movieContainer.innerHTML = "";
+        elokuvaContainer.innerHTML = "";
         
         // Poistetaan useat esiintymät elokuvista
-        const uniqueMovies = new Map();
+        const karsitutElokuvat = new Map();
         
-        Array.from(movieData).forEach(movie => {
+        Array.from(elokuvaTiedot).forEach(movie => {
             const title = movie.getElementsByTagName("Title")[0].textContent;
             const eventId = movie.getElementsByTagName("EventID")[0].textContent;
             
             // Tallennetaan vain seuraava näytös
-            if (!uniqueMovies.has(eventId)) {
-                uniqueMovies.set(eventId, movie);
+            if (!karsitutElokuvat.has(eventId)) {
+                karsitutElokuvat.set(eventId, movie);
             }
         });
         
         // Näytetään elokuva kerran ja vain seuraava näytös
-        uniqueMovies.forEach(movie => {
+        karsitutElokuvat.forEach(movie => {
             const title = movie.getElementsByTagName("Title")[0].textContent;
             const imageUrl = movie.getElementsByTagName("EventLargeImagePortrait")[0]?.textContent || "";
             const showtime = movie.getElementsByTagName("dttmShowStart")[0].textContent;
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Seuraava näytös: ${formatDateTime(showtime)}</p>
             `;
             
-            movieContainer.appendChild(movieCard);
+            elokuvaContainer.appendChild(movieCard);
         });
     }
     
