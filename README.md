@@ -23,14 +23,18 @@ Marianna Raitamaa ja Emilia Ahti
 <p>Listauksessa on näkyvillä elokuvan kansikuva, ikäraja, elokuvan kesto, sekä seuraavan näytöksen päivämäärä ja kellonaika. </p>
 
 ## Kuva sovelluksesta
+<img src="Kuvat/Finnkino-sovellus.jpg" alt="Finnkino-sovellus">
 
 ## Käytetyt teknologiat
-<p>Projektin toteutuksessa on käytetty html, css ja javascriptiä.</p>
 <ul>
-  <li>HTML on käytetty sovelluksen rakenteen määrittelyyn,</li>
-  <li>CSS on käytetty sovelluksen ulkoasun ja asettelun määrittelyyn ja</li>
-  <li>Javascriptiä on käytetty sovelluksen interaktiivisuuden luomiseen.</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>Javascript</li>
+  <li>XMLHttpRequest AJAX kutsuille</li>
+  <li>Finnkino XML API</li>
 </ul>
+- Teatterilistaus : https://www.finnkino.fi/xml/TheatreAreas/
+- Näytösaikataulu : https://www.finnkino.fi/xml/Schedule/
 
 ## Lähteet
 <p>Lähteinä käytetty tuntimateriaalia, w3Schoolin materiaaleja, videotutoriaaleja ja koodin tarkistukseen chatgpt.</p>
