@@ -23,6 +23,7 @@ Marianna Raitamaa ja Emilia Ahti
 <p>Listauksessa on näkyvillä elokuvan kansikuva, ikäraja, elokuvan kesto, sekä seuraavan näytöksen päivämäärä ja kellonaika. </p>
 
 ## Kuva sovelluksesta
+<img src="kuvat/Finnkino-sovellus.jpg" alt="Finnkino-sovellus">
 
 ## Käytetyt teknologiat
 <ul>
