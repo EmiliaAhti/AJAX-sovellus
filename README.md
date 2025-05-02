@@ -20,7 +20,7 @@ Marianna Raitamaa ja Emilia Ahti
 <p>Finnkino leffahaku sovelluksesta löydät tiedot elokuvateattereissa pyörivistä elokuvista. </p>
 <p>Ensin valitaan teatteri sivun yläreunassa olevasta “Finnkino leffahaku” pudotusvalikosta. </p>
 <p>Teatterin valinnan jälkeen sovellus listaa esille kaikki kyseisen teatterin seuraavat näytökset. </p>
-<p>Listauksessa on näkyvillä elokuvan kansikuva, ikäraja, elokuvan kesto, seuraavan näytöksen päivämäärä, sekä kellonaika. </p>
+<p>Listauksessa on näkyvillä elokuvan kansikuva, ikäraja, elokuvan kesto, sekä seuraavan näytöksen päivämäärä ja kellonaika. </p>
 
 ## Kuva sovelluksesta
 
