@@ -40,7 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         theaterSelect.innerHTML = "<option value=''>Valitse teatteri</option>";
         Array.from(theaterData).forEach(theater => {
             const name = theater.getElementsByTagName("Name")[0].textContent;
-            if (name !== "Pääkaupunkiseutu") {
+
+            const excludedTheaters = ["Valitse alue/teatteri", "Pääkaupunkiseutu", "Espoo", "Helsinki", "Tampere", "Turku ja Raisio"];
+
+            if (!excludedTheaters.includes(name)) {
                 const id = theater.getElementsByTagName("ID")[0].textContent;
                 const option = document.createElement('option');
                 option.value = id;
