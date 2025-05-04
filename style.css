@@ -18,7 +18,8 @@ h1 {
     margin-bottom: 30px;
 }
 
-.theater-selection {
+/* Pudotusvalikko */
+.teatteri-valikoima {
     text-align: center;
     margin-bottom: 30px;
 }
@@ -45,13 +46,15 @@ select:focus {
     box-shadow: 0 0 5px rgba(229, 9, 20, 0.3);
 }
 
-.movie-container {
+/* Elokuva-valikko */
+.elokuva-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
 
+/* Elokuvakortit */
 .movie-card {
     width: 220px;
     border-radius: 8px;
